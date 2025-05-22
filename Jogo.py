@@ -2,6 +2,14 @@ from Personagens.Heroi import Personagem
 from Personagens.Vampiro import Vampiro
 from Personagens.Valdrak import Valdrak
 from Habilidades.habilidadesHeroi import ataque1, ataque2, ataque3, ataque4
+from time import sleep
+
+#Função para contar a historia
+def narrar(texto, delay=0.05):
+    for letra in texto:
+        print(letra, end="", flush=True)
+        sleep(delay)
+    print()
 
 habilidades = [ataque1, ataque2, ataque3, ataque4]
 
@@ -19,8 +27,11 @@ VampirosPadrao = set(
         Vampiro("3")
     ]
 )
+
 valdrak = Valdrak()
 heroisCriados = set()
+
+
 
 while True:
     try:
