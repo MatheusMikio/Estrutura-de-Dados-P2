@@ -36,8 +36,6 @@ valdrak = Valdrak()
 #Conjunto para armazenar heróis criados pelo jogador
 heroisCriados = set()
 
-
-
 while True:
     try:
         #Menu principal com as 3 opções principais
