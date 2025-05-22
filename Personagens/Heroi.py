@@ -23,7 +23,7 @@ class Personagem:
                 return
 
             random.shuffle(self.habilidades) 
-            self.mao.append(self.habilidades.pop(0))
+            self.mao.append(self.habilidades.pop())
 
     def atacar(self, alvo, numeroHabilidade : int): 
         if not self.mao:
