@@ -13,6 +13,7 @@ def narrar(texto, delay=0.05):
 
 habilidades = [ataque1, ataque2, ataque3, ataque4]
 
+#Conjunto de heróis pré-definidos
 HeroisPadrao = set([
     Personagem("Aric Stormblade", habilidades),
     Personagem("Liora Shadowhisper", habilidades),
@@ -20,6 +21,7 @@ HeroisPadrao = set([
     Personagem("Seraphina Brightflame", habilidades)
     ])
 
+#Conjunto de vampiros
 VampirosPadrao = set(
     [
         Vampiro("1"),
@@ -28,13 +30,17 @@ VampirosPadrao = set(
     ]
 )
 
+#Instância do chefe final Valdrak
 valdrak = Valdrak()
+
+#Conjunto para armazenar heróis criados pelo jogador
 heroisCriados = set()
 
 
 
 while True:
     try:
+        #Menu principal com as 3 opções principais
         print("1 - Jogar")
         print("2 - Criar heroi")
         print("3 - Sair")
@@ -42,7 +48,8 @@ while True:
         match opcao:
             case 1:
                 if len(heroisCriados) < 4:
-                    print("Nao ha herois suficientes(É necessário 4 personagens), dseja usar os herois padroes?")
+                    #Verificação da lista de herois criados
+                    print("Nao ha herois suficientes(É necessário 4 personagens), deseja usar os herois padroes?")
                     opcao = input("S/N: ")[0].upper()
                     if opcao == "S":
                         print("Iniciando o jogo...")

@@ -1,3 +1,4 @@
+#Classe para o chefe final
 class Valdrak:
     def __init__(self):
         self.nome = "Valdrak"

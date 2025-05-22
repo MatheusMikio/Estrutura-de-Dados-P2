@@ -1,3 +1,4 @@
+#Classe base para os heróis do jogo.
 class Personagem:
     def __init__(self, nome : str, habilidades : list):
         self.nome = nome
