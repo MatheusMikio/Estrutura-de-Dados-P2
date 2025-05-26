@@ -1,6 +1,7 @@
 from Personagens.Heroi import Personagem
 from Personagens.Vampiro import Vampiro
 from Personagens.Valdrak import Valdrak
+from Mecanica.batalha import combate
 from Habilidades.habilidadesHeroi import ataque1, ataque2, ataque3, ataque4
 from time import sleep
 
@@ -10,6 +11,8 @@ def narrar(texto, delay=0.05):
         print(letra, end="", flush=True)
         sleep(delay)
     print()
+
+
 
 habilidades = [ataque1, ataque2, ataque3, ataque4]
 
@@ -51,12 +54,16 @@ while True:
                     opcao = input("S/N: ")[0].upper()
                     if opcao == "S":
                         print("Iniciando o jogo...")
-                        #Usar heroisPadrao
-
+                        
                     elif opcao == "N":
                         print("Voltando...")
                     else:
                         print("Opcao invalida")
+                else:
+                    combate(heroisCriados, VampirosPadrao)
+                    for per in heroisCriados:
+                        per.resetarPersonagem()
+
             case 2:
                 if len(heroisCriados) >= 4:
                     print("Voce ja criou todos os herois possiveis")
