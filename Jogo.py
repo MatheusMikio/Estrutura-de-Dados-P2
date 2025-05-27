@@ -8,7 +8,7 @@ from historia.historia import narrar
 
 historia = criarHistoria()
 
-#Função para contar a historia
+
 
 # Habilidades
 habilidades = [ataque1, ataque2, ataque3, ataque4]
@@ -38,7 +38,6 @@ ultimaLuta = set(
         Valdrak()
     ]
 )
-
 
 #Conjunto para armazenar heróis criados pelo jogador
 heroisCriados = set()

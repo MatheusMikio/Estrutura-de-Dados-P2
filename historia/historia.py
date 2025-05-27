@@ -1,7 +1,7 @@
-
 from collections import deque
 from time import sleep
 
+#Função para contar a historia
 def narrar(texto, delay=0.05):
     for letra in texto:
         print(letra, end="", flush=True)

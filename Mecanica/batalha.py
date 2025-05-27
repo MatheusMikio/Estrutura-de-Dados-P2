@@ -2,6 +2,7 @@ from Mecanica.turno import Turno
 import random
 from historia.historia import narrar
 
+#Gerencia o sistema de combate
 def combate(heroisCriados,inimigos,chefe :int = 0):
     #criando variaveis
     rodadas = 1
