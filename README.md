@@ -35,3 +35,22 @@ O jogo funciona em turnos alternados entre heróis e inimigos:
 2. Se atacar, selecione habilidade e alvo
 3. Inimigos agem automaticamente
 4. Rodada se repete até vitória ou derrota
+
+### Estruturas de Dados Utilizadas
+
+- **Fila (Queue)**: Utilizada para gerenciar os eventos dentro de cada capítulo, garantindo uma execução linear e ordenada conforme os eventos são processados e removidos da fila.
+
+- **Pilha (Stack)**: Empregada para armazenar as cartas de habilidade, permitindo o acesso LIFO (Last In, First Out) que é ideal para o sistema de habilidades do jogo.
+
+- **Tupla (Tuple)**: Utilizada para representar os capítulos da campanha, uma vez que se trata de uma história pré-definida que não requer mutabilidade, garantindo assim a imutabilidade dos dados.
+
+- **Conjunto (Set)**: Utilizado para gerenciar o grupo de jogadores, assegurando que cada personagem seja único e evitando duplicações.
+
+- **Dicionário (Dictionary)**: Escolhido para armazenar informações sobre as habilidades, proporcionando um acesso rápido e eficiente através de chaves, sem aumentar a complexidade do código.
+
+- **Lista Encadeada (Linked List)**: Implementada para controlar a sequência de turnos no combate, garantindo uma ordem linear e sequencial das ações.
+
+## Colaboradores
+- Matheus Mikio Cisterna Takahashi - RA: 2005154
+- Mateus Hideo Yamashita Santos - RA: 2005332
+- Samara Adorno - RA: 2001639
