@@ -1,9 +1,10 @@
-from Mecanica.Turno import Turno
+from Mecanica.turno import Turno
 import random
+from historia.historia import narrar
 
-def combate(heroisCriados,inimigos):
+def combate(heroisCriados,inimigos,chefe :int = 0):
     #criando variaveis
-    rodadas = 0
+    rodadas = 1
     sequencia = set()
     duelo = True
     posicaoinimigo =set()
@@ -21,7 +22,12 @@ def combate(heroisCriados,inimigos):
     for inimigo in inimigos:
         qtdIni += 1
         sequencia.add(inimigo)
-
+    if chefe == 0:
+        narrar("--Apareceu "+ str(qtdIni) + " inimigo(s)-----")
+    else:
+        narrar("Valdrak Apareceu essa sera a ultima batalha cuidado!!") 
+        narrar("--Apareceu mais "+ str(qtdIni-1) + " inimigo(s) com Valdrak-----")
+        
 
 
     #encadeando os participantes do duelo
@@ -32,37 +38,44 @@ def combate(heroisCriados,inimigos):
         if turno[i].tipo == 1:
             posicaoinimigo.add(i)
 
-            
+    
+    input("-press any key-")
+    narrar("Inicio de combate, Turno 1:",0.02)
     # incio do duelo em turnos
-    print(turno)
     while(duelo):
         p=0
         if turno[j].vida > 0:
-                
             #Turno do inimigo
             if turno[j].tipo == 1:
+                narrar("Turno do: "+ turno[j].nome,0.02)                
+                input()
                 atacado = random.randint(0,len(turno)-1)
                 if turno[atacado].tipo == 1:
                     print("inimigo Errou o ataque")
                 else:
-                    turno[j].atacar(turno[atacado])
+                    if turno[j].chefe == 0:
+                        turno[j].atacar(turno[atacado])
+                    else:
+                        habilidade = random.randint(1,4)
+                        turno[j].atacar(turno[atacado],habilidade)
                     if turno[atacado].vida < 0:
                         qtdHeroi-=1
                         if qtdHeroi == 0:
                             duelo = False
+                input()
             else:
                 #Turno do Heroi
-                print("Turno do heroi:"+turno[j].nome)
-                print("Vida:"+ str(turno[j].vida))
-                print("Energia:"+ str(turno[j].energia))
-                print("Escolha uma habilidade: ")
+                narrar("Turno do heroi:"+turno[j].nome,0.02)
+                narrar("Vida:"+ str(turno[j].vida),0.02)
+                narrar("Energia:"+ str(turno[j].energia),0.02)
+                narrar("Escolha uma habilidade: ",0.02)
                 turno[j].mostrarCartas()
                 print("0 - Passar turno")
                 opcao = int(input())
                 if opcao == 0:
                     turno[j].regem()
                 else:
-                    print("Escolha o inimigos")
+                    narrar("Escolha o inimigos",0.02)
                     for p in range(len(turno)):
                         if turno[p].tipo == 1 and turno[p].vida > 0:
                             print( str(p) +"-" +turno[p].nome +" Vida:" +str(turno[p].vida))
@@ -77,7 +90,8 @@ def combate(heroisCriados,inimigos):
             if len(turno)-1 == j:
                 rodadas += 1
                 j = 0
-                print("Turno:"+ str(rodadas))
+                narrar("Turno:"+ str(rodadas),0.02)
+                input()
             j+=1
         else:
             j+=1

@@ -3,6 +3,8 @@ class Valdrak:
     def __init__(self):
         self.nome = "Valdrak"
         self.vida = 250
+        self.tipo = 1
+        self.chefe = 1
         self.habilidades = {
             "1" :{
                 "nome" : "Garra",

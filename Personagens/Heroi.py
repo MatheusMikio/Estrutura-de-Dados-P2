@@ -1,6 +1,7 @@
 #Classe base para os heróis do jogo.
 import random
 from Habilidades import habilidadesHeroi
+from historia.historia import narrar
 
 class Personagem:
     def __init__(self, nome : str, habilidades : list):
@@ -9,6 +10,7 @@ class Personagem:
         self.energia = 1
         self.habilidadesPersonagem = habilidades
         self.habilidades = []
+        self.tipo = 0
         self.mao = []
 
         #Criando uma lista de habilidades com 5 cópias de cada habilidade.
@@ -22,6 +24,10 @@ class Personagem:
     def embaralhar(self):
         random.shuffle(self.habilidades)
         self.pegarCartas(5)
+
+    def regem(self):
+        self.energia +=1
+
 
     #Adiciona cartas do baralho para a mão do personagem.
     def pegarCartas(self, quantidade : int = 1):
@@ -41,8 +47,8 @@ class Personagem:
             return
         
         if numeroHabilidade < 1 or numeroHabilidade > len(self.mao):
-            print("Número de carta inválido.")
-            return
+            narrar("Você tentou utilizar uma habilidade desconhecida ate por si mesmo, mas não deu certo .")
+            return 
 
         # Executa o ataque se tiver energia suficiente
         if self.energia >= self.mao[numeroHabilidade-1]["custo"]:

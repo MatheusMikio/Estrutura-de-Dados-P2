@@ -3,17 +3,14 @@ from Personagens.Vampiro import Vampiro
 from Personagens.Valdrak import Valdrak
 from Mecanica.batalha import combate
 from Habilidades.habilidadesHeroi import ataque1, ataque2, ataque3, ataque4
-from time import sleep
+from historia.historia import criarHistoria
+from historia.historia import narrar
+
+historia = criarHistoria()
 
 #Função para contar a historia
-def narrar(texto, delay=0.05):
-    for letra in texto:
-        print(letra, end="", flush=True)
-        sleep(delay)
-    print()
 
-
-
+# Habilidades
 habilidades = [ataque1, ataque2, ataque3, ataque4]
 
 #Conjunto de heróis pré-definidos
@@ -34,7 +31,14 @@ VampirosPadrao = set(
 )
 
 #Instância do chefe final Valdrak
-valdrak = Valdrak()
+ultimaLuta = set(
+    [
+        Vampiro("1"),
+        Vampiro("2"),
+        Valdrak()
+    ]
+)
+
 
 #Conjunto para armazenar heróis criados pelo jogador
 heroisCriados = set()
@@ -53,14 +57,30 @@ while True:
                     print("Nao ha herois suficientes(É necessário 4 personagens), deseja usar os herois padroes?")
                     opcao = input("S/N: ")[0].upper()
                     if opcao == "S":
-                        print("Iniciando o jogo...")
+                         while historia:
+                            i = historia.popleft()
+                            if i == 1:
+                                combate(HeroisPadrao,VampirosPadrao)
+                            elif i == 2:
+                                combate(HeroisPadrao,ultimaLuta,1)
+                            narrar(i)
+                            input("-press any key-")
+                            for per in heroisCriados:
+                                per.resetarPersonagem()
                         
                     elif opcao == "N":
                         print("Voltando...")
                     else:
                         print("Opcao invalida")
                 else:
-                    combate(heroisCriados, VampirosPadrao)
+                    while historia:
+                        i = historia.popleft()
+                        if i == 1:
+                            combate(heroisCriados,VampirosPadrao)
+                        elif i == 2:
+                            combate(heroisCriados,ultimaLuta,1)
+                        narrar(i)
+                        input("-press any key-")
                     for per in heroisCriados:
                         per.resetarPersonagem()
 
